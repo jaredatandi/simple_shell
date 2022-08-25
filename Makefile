@@ -9,7 +9,7 @@ CFLAGS=-Wall -Werror -Wextra -pedantic -std=gnu89
 .PHONY: all clean
 
 all: 
-	$(CC) $(CFLAGS) *.c -o shell
+	$(CC) $(CFLAGS) *.c -o ss 
 
 clean:
-	/bin/rm -f *.out *.o 
+	/bin/rm -f *.out *.o ss 
