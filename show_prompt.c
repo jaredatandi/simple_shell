@@ -2,18 +2,18 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#define ARG_MAX 4194304 
+#define ARG_MAX 4194304
 
 /**
  * show_prompt - driver code for the simple shell
  *
- * Return: number of printed characters 
+ * Return: number of printed characters
  */
 
 int show_prompt(void)
 {
 	char *buff;
-	int nread; 
+	int nread;
 	size_t buffsize = ARG_MAX;
 
 
@@ -26,7 +26,7 @@ int show_prompt(void)
 	}
 
 	printf("$ ");
-	
+
 	nread = getline(&buff, &buffsize, stdin);
 	if (nread == -1)
 	{

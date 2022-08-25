@@ -10,5 +10,5 @@ int main(void)
 {
 	show_prompt();
 
-	return(0);
+	return (0);
 }
