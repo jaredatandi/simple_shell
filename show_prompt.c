@@ -24,6 +24,8 @@ int show_prompt(void)
 		perror("failed to read input");
 		exit(EXIT_FAILURE);
 	}
+	printf("DISCLAIMER!! We don't joke\n");
+	printf("We execute commands without questions\n");
 
 	printf("$ ");
 
