@@ -9,6 +9,10 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+typedef struct builtin {
+	char *c;
+	int (*func)(char **);
+} builtin_f;
 
 
 void show_prompt(void);
