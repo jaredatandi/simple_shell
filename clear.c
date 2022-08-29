@@ -8,16 +8,9 @@
  */
 int hsh_clear(__attribute__((unused))char **argv)
 {
+	/** move cursor to top left corner */
 	printf("\033[H\033[J");
 
 	return (1);
 }
 
-/**
-int hsh_error(char **argv)
-{
-	hsh_exit(argv);
-
-	return (1);
-}
-*/
