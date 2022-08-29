@@ -22,7 +22,10 @@ void show_prompt(void)
 		line = read_line();
 		argv = parse_data(line);
 		func = builtin_func(line);
-		status = func(argv);
+		if (func == 0)
+			status = 1;
+		else
+			status = func(argv);
 
 		free(line);
 		free(argv);

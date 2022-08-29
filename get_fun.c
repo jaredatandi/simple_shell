@@ -26,7 +26,10 @@ int (*builtin_func(char *s))(char **)
 	register int i;
 
 	for (i = 0; i < f; i++)
+	{
 		if ((strcmp(func_array[i].ch,s)) == 0)
 			return (func_array[i].func);
-	return (NULL);
+	}
+	printf("%s: command not found\n", s);
+	return (0);
 }
