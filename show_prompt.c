@@ -14,6 +14,7 @@ void show_prompt(void)
 {
 	char *line, **argv;
 	int status;
+	int (*func)(char **);
 
 	do {
 		printf("$ ");
@@ -21,6 +22,8 @@ void show_prompt(void)
 		line = read_line();
 		argv = parse_data(line);
 		status = launch(argv);
+		func = builtin_func(line);
+		func(argv);
 
 		free(line);
 		free(argv);

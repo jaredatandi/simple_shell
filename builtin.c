@@ -7,7 +7,7 @@
 
 int _num(void)
 {
-	return (sizeof(builtin_cmd) / sizeof(char *));
+	return (sizeof(builtin_f) / sizeof(char *));
 }
 
 /**
@@ -35,14 +35,12 @@ int _cd(char **argv)
  * Return: 1 if success
  */
 
-int _help(char **argv)
+int _help(__attribute__((unused))char **argv)
 {
-	int i = 1;
-
 	printf("Simple shell\n");
 	printf("Type a program name and hit enter\n");
 
-	return (i);
+	return (1);
 }
 
 /**
@@ -51,7 +49,7 @@ int _help(char **argv)
  * Return: 0 success
  */
 
-int _exit(char **argv)
+int _exit(__attribute__((unused))char **argv)
 {
 	return (0);
 }

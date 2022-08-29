@@ -21,8 +21,8 @@ char **parse_data(char *line);
 int launch(char **argv);
 char *read_line(void);
 
-int hsh_cd(char **argv);
-int hsh_exit(char **argv);
-int hsh_help(char **argv);
+int _cd(char **argv);
+int _exit(char **argv);
+int _help(char **argv);
 
 #endif

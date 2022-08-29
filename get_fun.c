@@ -13,7 +13,7 @@
  * Return: a pointer to the matching function
  */
 
-int (*builtin_func(char s))(char **)
+int (*builtin_func(char *s))(char **)
 {
 	builtin_f[] = {
 		{"cd", _cd},
