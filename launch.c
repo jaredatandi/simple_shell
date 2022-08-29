@@ -10,7 +10,7 @@
 
 int launch(char **argv)
 {
-	char *cmd = "sh";
+	char *cmd = "/bin/bash";
 	char **args = argv;
 	char **env = NULL;
 

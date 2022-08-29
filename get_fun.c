@@ -20,10 +20,11 @@ int (*builtin_func(char *s))(char **)
 		{"cd", hsh_cd},
 		{"help", hsh_help},
 		{"exit", hsh_exit},
-		{"clear", hsh_clear}
+		{"clear", hsh_clear},
+		{"pwd", print_dir} 
 	};
 
-	int f = 4;
+	int f = 5;
 
 	register int i;
 

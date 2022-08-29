@@ -13,7 +13,7 @@
 void show_prompt(void)
 {
 	char *line, **argv;
-	int status;
+	int status = 1;
 	int (*func)(char **);
 
 	printf("\033[H\033[J");

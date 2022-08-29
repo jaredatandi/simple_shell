@@ -25,7 +25,7 @@ int (*builtin_func(char *s))(char **);
 
 
 void show_prompt(void);
-void print_dir(void);
+int print_dir(char **args);
 char **parse_data(char *line);
 int launch(char **argv);
 char *read_line(void);

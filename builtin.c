@@ -26,7 +26,6 @@ int hsh_cd(char **argv)
 		{
 			perror("hsh");
 		}
-		print_dir();
 	}
 	return (1);
 }

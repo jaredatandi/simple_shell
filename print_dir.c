@@ -8,10 +8,12 @@
  * print_dir - prints the current directory
  */
 
-void print_dir(void)
+int print_dir(__attribute__((unused))char **args)
 {
 	char dir[size];
 
 	getcwd(dir, sizeof(dir));
 	printf("%s\n", dir);
+
+	return (1);
 }
