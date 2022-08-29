@@ -24,6 +24,7 @@ void show_prompt(void)
 		status = launch(argv);
 		func = builtin_func(line);
 		func(argv);
+		printf("%s\n", line);
 
 		free(line);
 		free(argv);
