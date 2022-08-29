@@ -33,5 +33,6 @@ char *read_line(void);
 int hsh_cd(char **argv);
 int hsh_exit(char **argv);
 int hsh_help(char **argv);
+int hsh_clear(char **argv);
 
 #endif

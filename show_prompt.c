@@ -16,8 +16,8 @@ void show_prompt(void)
 	int status;
 	int (*func)(char **);
 
+	printf("\033[H\033[J");
 	do {
-		printf("\033[H\033[J");
 		printf("$ ");
 
 		line = read_line();

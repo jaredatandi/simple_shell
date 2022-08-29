@@ -13,5 +13,5 @@ void print_dir(void)
 	char dir[size];
 
 	getcwd(dir, sizeof(dir));
-	printf("\n%s\n", dir);
+	printf("%s\n", dir);
 }

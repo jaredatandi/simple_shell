@@ -18,10 +18,11 @@ int (*builtin_func(char *s))(char **)
 	builtin_f func_array[] = {
 		{"cd", hsh_cd},
 		{"help", hsh_help},
-		{"exit", hsh_exit}
+		{"exit", hsh_exit},
+		{"clear", hsh_clear}
 	};
 
-	int f = 3;
+	int f = 4;
 
 	register int i;
 
