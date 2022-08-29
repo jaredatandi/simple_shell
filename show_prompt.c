@@ -21,6 +21,8 @@ void show_prompt(void)
 		printf("$ ");
 
 		line = read_line();
+		if (line == NULL)
+			break;
 		argv = parse_data(line);
 		func = builtin_func(line);
 		if (func == 0)

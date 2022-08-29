@@ -12,3 +12,12 @@ int hsh_clear(__attribute__((unused))char **argv)
 
 	return (1);
 }
+
+/**
+int hsh_error(char **argv)
+{
+	hsh_exit(argv);
+
+	return (1);
+}
+*/

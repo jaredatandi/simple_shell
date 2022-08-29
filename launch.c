@@ -10,24 +10,13 @@
 
 int launch(char **argv)
 {
-	pid_t pid;
-	int status;
+	char *cmd = "sh";
+	char **args = argv;
+	char **env = NULL;
 
-	pid = fork();
-
-	/* check if pid is of child */
-	if (pid == 0)
-	{
-		if (execvp(argv[0], argv) == -1)
-		{
-			perror("hsh");
-		}
-		exit(EXIT_FAILURE);
-	}
-	else if (pid < 0)
+	if ((execve(cmd, args, env) == -1))
 		perror("hsh");
-	do {
-		pid = waitpid(pid, &status, WUNTRACED);
-	} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+	perror("something went wrong\n");
+
 	return (1);
 }

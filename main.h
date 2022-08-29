@@ -34,5 +34,6 @@ int hsh_cd(char **argv);
 int hsh_exit(char **argv);
 int hsh_help(char **argv);
 int hsh_clear(char **argv);
+int hsh_error(char **argv);
 
 #endif

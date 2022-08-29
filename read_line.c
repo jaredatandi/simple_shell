@@ -26,7 +26,9 @@ char *read_line(void)
 	{
 		ch = getchar();
 
-		if (ch == EOF || ch == '\n')
+		if (ch == EOF)
+			break;	
+		if (ch == '\n')
 		{
 			buff[cursor] = '\0';
 			return (buff);
@@ -49,4 +51,6 @@ char *read_line(void)
 			}
 		}
 	}
+	free(buff);
+	return (NULL);
 }

@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 
 /**
@@ -25,6 +26,9 @@ int (*builtin_func(char *s))(char **)
 	int f = 4;
 
 	register int i;
+
+	if (!s)
+		return(NULL);
 
 	for (i = 0; i < f; i++)
 	{
