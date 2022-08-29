@@ -15,10 +15,10 @@
 
 int (*builtin_func(char *s))(char **)
 {
-	builtin_f[] = {
-		{"cd", _cd},
-		{"help", _help},
-		{"exit", _exit};
+	builtin_f func_array[] = {
+		{"cd", hsh_cd},
+		{"help", hsh_help},
+		{"exit", hsh_exit}
 	};
 
 	int f = 3;
@@ -26,7 +26,7 @@ int (*builtin_func(char *s))(char **)
 	register int i;
 
 	for (i = 0; i < f; i++)
-		if (builtin_f[i].ch == s)
-			return (builtin_f.func);
+		if (func_array[i].ch == s)
+			return (func_array->func);
 	return (NULL);
 }

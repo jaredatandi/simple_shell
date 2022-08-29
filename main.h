@@ -10,9 +10,11 @@
 #include <readline/history.h>
 
 typedef struct builtin {
-	char *c;
+	char *ch;
 	int (*func)(char **);
 } builtin_f;
+
+int (*builtin_func(char *s))(char **);
 
 
 void show_prompt(void);
@@ -21,8 +23,8 @@ char **parse_data(char *line);
 int launch(char **argv);
 char *read_line(void);
 
-int _cd(char **argv);
-int _exit(char **argv);
-int _help(char **argv);
+int hsh_cd(char **argv);
+int hsh_exit(char **argv);
+int hsh_help(char **argv);
 
 #endif

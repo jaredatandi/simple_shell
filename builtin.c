@@ -5,7 +5,7 @@
  * Return: number of total commands
  */
 
-int _num(void)
+int hsh_num(void)
 {
 	return (sizeof(builtin_f) / sizeof(char *));
 }
@@ -16,7 +16,7 @@ int _num(void)
  * Return: 1 if success
  */
 
-int _cd(char **argv)
+int hsh_cd(char **argv)
 {
 	if (argv[1] == NULL)
 		printf("hsh: usage cd <arguement>\n");
@@ -35,7 +35,7 @@ int _cd(char **argv)
  * Return: 1 if success
  */
 
-int _help(__attribute__((unused))char **argv)
+int hsh_help(__attribute__((unused))char **argv)
 {
 	printf("Simple shell\n");
 	printf("Type a program name and hit enter\n");
@@ -49,7 +49,7 @@ int _help(__attribute__((unused))char **argv)
  * Return: 0 success
  */
 
-int _exit(__attribute__((unused))char **argv)
+int hsh_exit(__attribute__((unused))char **argv)
 {
 	return (0);
 }
