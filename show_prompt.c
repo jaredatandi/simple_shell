@@ -1,3 +1,4 @@
+#include "main.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -7,37 +8,22 @@
 /**
  * show_prompt - driver code for the simple shell
  *
- * Return: number of printed characters
  */
 
-int show_prompt(void)
+void show_prompt(void)
 {
-	char *buff;
-	int nread;
-	size_t buffsize = ARG_MAX;
+	char *line, **argv;
+	int status;
 
+	do {
+		printf("$ ");
 
-	buff = malloc(sizeof(char) * buffsize);
+		line = read_line();
+		argv = parse_data(line);
+		status = launch(argv);
 
-	if (buff == NULL)
-	{
-		perror("failed to read input");
-		exit(EXIT_FAILURE);
-	}
-	printf("DISCLAIMER!! We don't joke\n");
-	printf("We execute commands without questions\n");
+		free(line);
+		free(argv);
 
-	printf("$ ");
-
-	nread = getline(&buff, &buffsize, stdin);
-	if (nread == -1)
-	{
-		perror("error reading line\n");
-		free(buff);
-		return (-1);
-	}
-
-	free(buff);
-
-	return (nread);
+	} while (status);
 }
