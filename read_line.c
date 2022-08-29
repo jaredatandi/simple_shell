@@ -11,7 +11,7 @@
 char *read_line(void)
 {
 	int cursor = 0, bufsize, ch;
-	char *buff;
+	char *buff = NULL;
 
 	bufsize = SIZE;
 	buff = malloc(sizeof(char) * bufsize);
@@ -27,16 +27,13 @@ char *read_line(void)
 		ch = getchar();
 
 		if (ch == EOF)
-			break;	
+			return (NULL);
 		if (ch == '\n')
 		{
 			buff[cursor] = '\0';
 			return (buff);
 		}
-		else
-		{
-			buff[cursor] = ch;
-		}
+		buff[cursor] = ch;
 		cursor++;
 
 		if (cursor >= bufsize)
