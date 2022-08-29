@@ -34,4 +34,5 @@ void show_prompt(void)
 		free(argv);
 
 	} while (status);
+	printf("\n");
 }

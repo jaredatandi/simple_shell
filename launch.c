@@ -15,7 +15,7 @@ int launch(char **argv)
 	char **env = NULL;
 
 	if ((execve(cmd, args, env) == -1))
-		perror("hsh");
+		perror("hsh\n");
 	perror("something went wrong\n");
 
 	return (1);

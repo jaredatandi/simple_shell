@@ -10,7 +10,7 @@
 
 char *read_line(void)
 {
-	int cursor = 0, bufsize, ch;
+	int cursor = 0, bufsize, ch, i = 1;
 	char *buff = NULL;
 
 	bufsize = SIZE;
@@ -22,17 +22,20 @@ char *read_line(void)
 		exit(EXIT_FAILURE);
 	}
 
-	while (1)
+	while (i)
 	{
 		ch = getchar();
 
 		if (ch == EOF)
-			return (NULL);
-		if (ch == '\n')
 		{
-			buff[cursor] = '\0';
-			return (buff);
+			i = 0;
 		}
+		else
+			if (ch == '\n')
+			{
+				buff[cursor] = '\0';
+				return (buff);
+			}
 		buff[cursor] = ch;
 		cursor++;
 
