@@ -21,10 +21,11 @@ void show_prompt(void)
 
 		line = read_line();
 		argv = parse_data(line);
+		/*
 		status = launch(argv);
+		*/
 		func = builtin_func(line);
-		func(argv);
-		printf("%s\n", line);
+		status = func(argv);
 
 		free(line);
 		free(argv);

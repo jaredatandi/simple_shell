@@ -20,11 +20,8 @@ int launch(char **argv)
 	}
 	else if (pid < 0)
 		perror("hsh");
-	else
-	{
-		do {
-			pid = waitpid(pid, &status, WUNTRACED);
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-	}
+	do {
+		pid = waitpid(pid, &status, WUNTRACED);
+	} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	return (1);
 }
