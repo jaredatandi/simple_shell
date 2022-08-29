@@ -16,23 +16,26 @@
 
 int (*builtin_func(char *s))(char **)
 {
+	/* store all the functions */
 	builtin_f func_array[] = {
 		{"cd", hsh_cd},
 		{"help", hsh_help},
 		{"exit", hsh_exit},
 		{"clear", hsh_clear},
-		{"pwd", print_dir} 
+		{"pwd", print_dir}
 	};
 
 	int f = 5;
 
 	register int i;
 
+	/* check if the input is a valid string */
 	if (!s)
-		return(NULL);
+		return (NULL);
 
 	for (i = 0; i < f; i++)
 	{
+		/* check if the command matches a function */
 		if ((strcmp(func_array[i].ch, s)) == 0)
 			return (func_array[i].func);
 	}

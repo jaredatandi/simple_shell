@@ -27,15 +27,12 @@ char *read_line(void)
 		ch = getchar();
 
 		if (ch == EOF)
-		{
 			i = 0;
+		if (ch == '\n')
+		{
+			buff[cursor] = '\0';
+			return (buff);
 		}
-		else
-			if (ch == '\n')
-			{
-				buff[cursor] = '\0';
-				return (buff);
-			}
 		buff[cursor] = ch;
 		cursor++;
 
