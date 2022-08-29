@@ -22,7 +22,10 @@ void show_prompt(void)
 
 		line = read_line();
 		if (line == NULL)
+		{
+			printf("\n");
 			break;
+		}
 		argv = parse_data(line);
 		func = builtin_func(line);
 		if (func == 0)
@@ -34,5 +37,4 @@ void show_prompt(void)
 		free(argv);
 
 	} while (status);
-	printf("\n");
 }
