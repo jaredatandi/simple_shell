@@ -1,6 +1,12 @@
 #include "main.h"
 #include <stdlib.h>
 
+/**
+ * launch - executes the builtin commands
+ * @argv: array of arguments
+ *
+ * Return: 1 if successfull
+ */
 
 int launch(char **argv)
 {

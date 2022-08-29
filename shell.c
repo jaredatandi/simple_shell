@@ -6,6 +6,9 @@
 
 /**
  * main - driver code
+ * @argc: argument count
+ * @args: a vector of the arguments
+ *
  *
  * Return: 0 always
  */

@@ -3,6 +3,11 @@
 
 #define SIZE 1024
 
+/**
+ * read_line - a function to take in inputs
+ * Return: a pointer to the string
+ */
+
 char *read_line(void)
 {
 	int cursor = 0, bufsize, ch;

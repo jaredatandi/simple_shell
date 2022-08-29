@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _num - calculates the number of commands
+ * hsh_num - calculates the number of commands
  * Return: number of total commands
  */
 
@@ -11,7 +11,7 @@ int hsh_num(void)
 }
 
 /**
- * _cd - changes directory
+ * hsh_cd - changes directory
  * @argv: the commanline arguments
  * Return: 1 if success
  */
@@ -30,7 +30,7 @@ int hsh_cd(char **argv)
 }
 
 /**
- * _help - gives help info
+ * hsh_help - gives help info
  * @argv: the commanline arguments
  * Return: 1 if success
  */
@@ -44,7 +44,7 @@ int hsh_help(__attribute__((unused))char **argv)
 }
 
 /**
- * _exit - exits the shell
+ * hsh_exit - exits the shell
  * @argv: the commanline arguments
  * Return: 0 success
  */

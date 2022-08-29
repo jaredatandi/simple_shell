@@ -27,7 +27,7 @@ int (*builtin_func(char *s))(char **)
 
 	for (i = 0; i < f; i++)
 	{
-		if ((strcmp(func_array[i].ch,s)) == 0)
+		if ((strcmp(func_array[i].ch, s)) == 0)
 			return (func_array[i].func);
 	}
 	printf("%s: command not found\n", s);

@@ -6,8 +6,8 @@
 
 /**
  * parse_data - parse the inputted line
- *
- *
+ * @line: the arguments from the shell
+ * Return: a pointer to array of strings
  */
 
 char **parse_data(char *line)
@@ -24,7 +24,7 @@ char **parse_data(char *line)
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(line, DELIM); 
+	token = strtok(line, DELIM);
 
 	while (token != NULL)
 	{
@@ -34,7 +34,7 @@ char **parse_data(char *line)
 		if (cursor >= buffsize)
 		{
 			buffsize += BUFFSIZE;
-			tokens = realloc(tokens, buffsize *sizeof(char
+			tokens = realloc(tokens, buffsize * sizeof(char
 						*));
 			if (!tokens)
 			{
