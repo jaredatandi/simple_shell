@@ -21,9 +21,6 @@ void show_prompt(void)
 
 		line = read_line();
 		argv = parse_data(line);
-		/*
-		status = launch(argv);
-		*/
 		func = builtin_func(line);
 		status = func(argv);
 

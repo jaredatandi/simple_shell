@@ -10,10 +10,12 @@
  * Return: 0 always
  */
 
-int main(void)
+int main(int argc, char **args)
 {
-
-	show_prompt();
+	if (argc == 1)
+		show_prompt();
+	else
+		launch(args);
 
 	return (0);
 }
