@@ -27,9 +27,11 @@ int (*builtin_func(char *s))(char **);
 void show_prompt(char **argv, char **env);
 int print_dir(char **args);
 char **parse_data(char *line, char *delim);
-int launch(char **argv);
+int exec_args(char **argv);
 char *read_line(void);
 char *get_environ(char **environ, char *var);
+char **get_path(char **env);
+char *create_path(char **args, char **tokens);
 
 int hsh_cd(char **argv);
 int hsh_exit(char **argv);

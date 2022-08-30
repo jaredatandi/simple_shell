@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <signal.h>
 
 #define ARG_MAX 4194304
 
@@ -12,13 +13,15 @@
 
 void show_prompt(char **argv, char **env)
 {
-	char *line, *delim, *cmd;
+	char *line, *delim, *cmd, **tokns;
 	int status = 1;
-	int (*func)(char **);
 
+	printf("here");
 	delim = " \t\a\n\b";
+	signal(SIGINT, SIG_IGN);
 
 	printf("\033[H\033[J");
+	tokns = get_path(env);
 	do {
 		printf("$ ");
 
@@ -36,11 +39,14 @@ void show_prompt(char **argv, char **env)
 		else
 			status = func(argv);
 			*/
-		cmd = 
+		cmd = create_path(argv, tokns);
 
+		if (cmd == NULL)
+			exec_args(argv);
 
 		free(line);
 		free(argv);
+		free(cmd);
 
 	} while (status);
 }

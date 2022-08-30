@@ -11,7 +11,7 @@
  * Return: 1 if successfull
  */
 
-int main(__attribute__((unused))int argc, char **argv, char **env)
+int exec_args(char **argv)
 {
 	pid_t c_pid;
 	int wstatus;
@@ -25,7 +25,7 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 	}
 	else if (c_pid == 0)
 	{
-		if (execve(argv[0],argv, env) == -1)
+		if (execve(argv[0],argv, NULL) == -1)
 		{
 			perror("hsh execve failed");
 			exit(EXIT_FAILURE);
