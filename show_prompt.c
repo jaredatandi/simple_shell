@@ -13,16 +13,17 @@
 
 void show_prompt(char **argv, char **env)
 {
-	char *line, *delim, *cmd, **tokns;
+	char *line = NULL, *del, *cmd, **tokns;
 	int status = 1;
 
-	printf("here");
-	delim = " \t\a\n\b";
+	del = " \t\a\n\b";
+
 	signal(SIGINT, SIG_IGN);
 
 	printf("\033[H\033[J");
 	tokns = get_path(env);
-	do {
+	while (status)
+	{
 		printf("$ ");
 
 		line = read_line();
@@ -31,14 +32,7 @@ void show_prompt(char **argv, char **env)
 			printf("\n");
 			break;
 		}
-		argv = parse_data(line, delim);
-		/*
-		func = builtin_func(line);
-		if (func == 0)
-			status = 1;
-		else
-			status = func(argv);
-			*/
+		argv = parse_data(line, del);
 		cmd = create_path(argv, tokns);
 
 		if (cmd == NULL)
@@ -48,5 +42,5 @@ void show_prompt(char **argv, char **env)
 		free(argv);
 		free(cmd);
 
-	} while (status);
+	}
 }

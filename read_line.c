@@ -10,44 +10,18 @@
 
 char *read_line(void)
 {
-	int cursor = 0, bufsize, ch, i = 1;
-	char *buff = NULL;
+	char *line = NULL;
+	int unparsed_len = 0;
+	size_t size = 0;
 
-	bufsize = SIZE;
-	buff = malloc(sizeof(char) * bufsize);
-
-	if (!buff)
+	if (getline(&line, &size, stdin) == -1)
 	{
-		perror("hsh: mem allocation error\n");
-		exit(EXIT_FAILURE);
+		free(line);
+		exit(-1);
 	}
 
-	while (i)
-	{
-		ch = getchar();
+	unparsed_len = strlen(line);
+	line[unparsed_len - 1] = '\0';
 
-		if (ch == EOF)
-			i = 0;
-		if (ch == '\n')
-		{
-			buff[cursor] = '\0';
-			return (buff);
-		}
-		buff[cursor] = ch;
-		cursor++;
-
-		if (cursor >= bufsize)
-		{
-			bufsize += SIZE;
-			buff = realloc(buff, bufsize);
-
-			if (!buff)
-			{
-				perror("hsh: mem allocation error\n");
-				exit(EXIT_FAILURE);
-			}
-		}
-	}
-	free(buff);
-	return (NULL);
+	return (line);
 }

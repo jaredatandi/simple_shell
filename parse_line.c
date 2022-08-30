@@ -11,39 +11,28 @@
 
 char **parse_data(char *line, char *delim)
 {
-	char **tokens, *token;
-	int cursor = 0;
-	int buffsize = BUFFSIZE;
+	char **pptoken;
+	int buf = 1024, i = 0;
 
-	tokens = malloc(sizeof(char *) * buffsize);
+	pptoken = malloc(sizeof(char *) * buf);
+	if (!pptoken)
+		exit(99);
 
-	if (!tokens)
+	pptoken[i] = strtok(line, delim);
+	i++;
+	while (1)
 	{
-		fprintf(stderr, "hsh: mem allocation error\n");
-		exit(EXIT_FAILURE);
-	}
-
-	token = strtok(line, delim);
-
-	while (token != NULL)
-	{
-		tokens[cursor] = token;
-		cursor++;
-
-		if (cursor >= buffsize)
+		pptoken[i] = strtok(NULL, delim);
+		if (i >= buf)
 		{
-			buffsize += BUFFSIZE;
-			tokens = realloc(tokens, buffsize * sizeof(char
-						*));
-			if (!tokens)
-			{
-				fprintf(stderr, "hsh: mem allocation error\n");
-				exit(EXIT_FAILURE);
-			}
+			buf += buf;
+			pptoken = realloc(pptoken, buf * (sizeof(char *)));
+			if (!pptoken)
+				exit(98);
 		}
-		token = strtok(NULL, delim);
+		if (pptoken[i] == NULL)
+			break;
+		i++;
 	}
-	tokens[cursor] = NULL;
-
-	return (tokens);
+	return (pptoken);
 }
