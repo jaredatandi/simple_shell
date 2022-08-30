@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 /**
  * main - getenv code
@@ -8,8 +9,18 @@
  * Return: 0 always
  */
 
-int main(int argc, char **argv)
+int main(void)
 {
+	char *shell;
+	char *argv[] = {"ls", NULL};
+	shell = "/usr/bin/pwd"; 
+
+	if ((execve(shell, argv, NULL)) == -1)
+	{
+		perror("hsh:");
+		return (-1);
+	}
+
 	printf("Accessign environment\n");
 	printf("  USER=%s\n", getenv("USER"));
 	printf("  UNDEFINED=%s\n", getenv("UNDEFINED"));
