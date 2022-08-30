@@ -13,14 +13,9 @@
  * Return: 0 always
  */
 
-int main(__attribute((unused))int argc, char **args)
+int main(__attribute__((unused))int argc, char **argv, char **env)
 {
-	/*
-	if (argc == 1)
-		show_prompt();
-	else
-	*/
-		launch(args);
+	show_prompt(argv, env);
 
 	return (0);
 }

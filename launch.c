@@ -25,13 +25,13 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 	}
 	else if (c_pid == 0)
 	{
-		if (execve("/usr/bin",argv, env) == -1)
+		if (execve(argv[0],argv, env) == -1)
 		{
 			perror("hsh execve failed");
 			exit(EXIT_FAILURE);
 		}
 	}
-	wait(&wstatus);
-	printf("parent has taken over\n");
+	else
+		wait(&wstatus);
 	return (0);
 }

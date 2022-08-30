@@ -24,11 +24,12 @@ typedef struct builtin
 int (*builtin_func(char *s))(char **);
 
 
-void show_prompt(void);
+void show_prompt(char **argv, char **env);
 int print_dir(char **args);
-char **parse_data(char *line);
+char **parse_data(char *line, char *delim);
 int launch(char **argv);
 char *read_line(void);
+char *get_environ(char **environ, char *var);
 
 int hsh_cd(char **argv);
 int hsh_exit(char **argv);

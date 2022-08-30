@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #define BUFFSIZE 1024
-#define DELIM " \n\r\a\t\b"
 
 /**
  * parse_data - parse the inputted line
@@ -10,7 +9,7 @@
  * Return: a pointer to array of strings
  */
 
-char **parse_data(char *line)
+char **parse_data(char *line, char *delim)
 {
 	char **tokens, *token;
 	int cursor = 0;
@@ -24,7 +23,7 @@ char **parse_data(char *line)
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(line, DELIM);
+	token = strtok(line, delim);
 
 	while (token != NULL)
 	{
@@ -42,7 +41,7 @@ char **parse_data(char *line)
 				exit(EXIT_FAILURE);
 			}
 		}
-		token = strtok(NULL, DELIM);
+		token = strtok(NULL, delim);
 	}
 	tokens[cursor] = NULL;
 
