@@ -13,11 +13,13 @@
  * Return: 0 always
  */
 
-int main(int argc, char **args)
+int main(__attribute((unused))int argc, char **args)
 {
+	/*
 	if (argc == 1)
 		show_prompt();
 	else
+	*/
 		launch(args);
 
 	return (0);

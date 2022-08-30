@@ -1,5 +1,8 @@
-#include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/wait.h>
 
 /**
  * launch - executes the builtin commands
@@ -8,29 +11,27 @@
  * Return: 1 if successfull
  */
 
-int launch(char **argv)
+int main(__attribute__((unused))int argc, char **argv, char **env)
 {
 	pid_t c_pid;
-	int status;
+	int wstatus;
 
-	if (strncmp("exit", argv[0], 4) == 0)
-		hsh_exit(argv);
 	c_pid = fork();
 
 	if (c_pid == -1)
 	{
-		perror("hsh");
+		perror("hsh: fork failed ");
 		exit(EXIT_FAILURE);
 	}
 	else if (c_pid == 0)
 	{
-		if (execve(argv[0], argv, NULL) == -1)
+		if (execve("/usr/bin",argv, env) == -1)
 		{
-			perror("hsh");
+			perror("hsh execve failed");
 			exit(EXIT_FAILURE);
 		}
 	}
-	else
-		wait(&status);
+	wait(&wstatus);
+	printf("parent has taken over\n");
 	return (0);
 }
