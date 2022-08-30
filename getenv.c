@@ -9,11 +9,10 @@
  * Return: 0 always
  */
 
-int main(void)
+int main(__attribute((unused))int argc, char **argv)
 {
 	char *shell;
-	char *argv[] = {"ls", NULL};
-	shell = "/usr/bin/pwd"; 
+	shell = "/usr/bin/ls"; 
 
 	if ((execve(shell, argv, NULL)) == -1)
 	{
