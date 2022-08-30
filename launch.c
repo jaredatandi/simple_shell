@@ -10,12 +10,27 @@
 
 int launch(char **argv)
 {
-	char **args = argv;
-	char **env = NULL;
+	pid_t c_pid;
+	int status;
 
-	if ((execve(cmd, args, env) == -1))
-		perror("hsh\n");
-	perror("something went wrong\n");
+	if (strncmp("exit", argv[0], 4) == 0)
+		hsh_exit(argv);
+	c_pid = fork();
 
-	return (1);
+	if (c_pid == -1)
+	{
+		perror("hsh");
+		exit(EXIT_FAILURE);
+	}
+	else if (c_pid == 0)
+	{
+		if (execve(argv[0], argv, NULL) == -1)
+		{
+			perror("hsh");
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+		wait(&status);
+	return (0);
 }
