@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
  * main - getenv code
@@ -12,6 +13,7 @@
 int main(__attribute((unused))int argc, char **argv)
 {
 	char *shell;
+
 	shell = "/usr/bin/ls"; 
 
 	if ((execve(shell, argv, NULL)) == -1)
@@ -19,11 +21,6 @@ int main(__attribute((unused))int argc, char **argv)
 		perror("hsh:");
 		return (-1);
 	}
-
-	printf("Accessign environment\n");
-	printf("  USER=%s\n", getenv("USER"));
-	printf("  UNDEFINED=%s\n", getenv("UNDEFINED"));
-	printf("  TERM=%s\n", getenv("TERM"));
 
 	return (0);
 }
