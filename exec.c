@@ -16,27 +16,22 @@ int _execve(char **argv)
 	char **arv;
 	pid_t c_pid;
 
+	if (!argv || !argv[1])
+		return (-1);
+
 	arv = _strtok(argv[1], "\n");
 
 	c_pid = fork();
 	if (c_pid < 0)
-	{
-		printf("Error: could not fork");
-		return (-1);
-	}
+		perror("hsh");
 
-	if (c_pid == 0)
+	else if (c_pid == 0)
 	{
 		if (execve(arv[0], arv, environ) == -1)
-		{
 			perror("Error:");
-		}
 	}
 	else
-	{
 		wait(&status);
-		return (-1);
-	}
 
 	return (0);
 }
