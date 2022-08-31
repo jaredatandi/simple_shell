@@ -2,14 +2,14 @@
 #include <stdlib.h>
 
 /**
- * getline - prints "$ " and wait for the user to enter
+ * _getline - prints "$ " and wait for the user to enter
  * a command, prints it in the next line
  *
  * @ac: arguments count
  *
  * Return: 0 sucess
  */
-int getline(void)
+int _getline(void)
 {
 	char *line = NULL;
 	ssize_t len = 0;

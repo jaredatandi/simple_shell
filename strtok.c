@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * _strtok - slits a string and returns an array
@@ -15,7 +16,7 @@ char **_strtok(char *str, char *delim)
 {
 	char **array;
 	char *token;
-	int i, j;
+	int i;
 
 	token = strtok(str, delim);
 	array = malloc(sizeof(char *) * 2);
