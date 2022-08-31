@@ -27,7 +27,7 @@ char **_strtok(char *str, char *delim)
 	}
 	i = 0;
 
-	/* copy the string */
+	/* copy the string to prevent strtok from messing*/
 	while (str[i])
 	{
 		copy[i] = str[i];
@@ -36,14 +36,14 @@ char **_strtok(char *str, char *delim)
 	copy[i] = '\0';
 
 	token = strtok(copy, delim);
-	array = malloc((sizeof(char *) * 2));
+	array = malloc((sizeof(char *)) * 2);
 
 	i = 0;
 	n = 3;
 	while (token)
 	{
-		array = realloc(array, (sizeof(char *) * n));
 		array[i] = strdup(token);
+		array = realloc(array, (sizeof(array) * n));
 		i++;
 		n++;
 		token = strtok(NULL, delim);
