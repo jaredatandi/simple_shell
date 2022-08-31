@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <string.h>
 
 #define BUFFSIZE 1024
 
@@ -26,7 +27,7 @@ char **parse_data(char *line, char *delim)
 		if (i >= buf)
 		{
 			buf += buf;
-			pptoken = realloc(pptoken, buf * (sizeof(char *)));
+			pptoken = realloc(pptoken, (sizeof(char *) * buf));
 			if (!pptoken)
 				exit(98);
 		}
@@ -35,4 +36,19 @@ char **parse_data(char *line, char *delim)
 		i++;
 	}
 	return (pptoken);
+}
+int main(void)
+{
+	char *test = "jared/keago:atandi";
+	char *delim = "/";
+	char **arr;
+	int i;
+
+	printf("here");
+	arr = parse_data(test, delim);
+
+	for (i = 0; i < 3; i++)
+		printf("%s\n", arr[i]);
+
+	return (0);
 }
