@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 
 /**
  * main - prints all arguements
@@ -16,7 +17,7 @@
 int main(int ac, char **av)
 {
 	int i = 0;
-	if (ac < 2)
+	if (ac == 1)
 	{
 		perror("prompt");
 		exit(EXIT_FAILURE);
