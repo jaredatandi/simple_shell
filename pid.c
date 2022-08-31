@@ -2,18 +2,16 @@
 #include <unistd.h>
 
 /**
- * main - PID
+ * pid - gets the pid of a process
  *
- * Return: 0 (success)
+ * Return: pid of the process
  */
 
-int main(void)
+pid_t pid(void)
 {
 	pid_t my_pid;
 
 	my_pid = getpid();
 
-	printf("%u\n", my_pid);
-
-	return (0);
+	return (my_pid);
 }

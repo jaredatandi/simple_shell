@@ -3,7 +3,7 @@
 #include <errno.h>
 
 /**
- * main - prints all arguements
+ * prompt - prints all arguements
  * @ac: arguements count
  * @av: null terminated array of arguements
  *
@@ -14,7 +14,7 @@
  */
 
 
-int main(int ac, char **av)
+int prompt(int ac, char **av)
 {
 	int i = 0;
 	if (ac == 1)
