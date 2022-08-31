@@ -16,9 +16,8 @@ char **splitstring(char *str, const char *delim)
 	int i, wn;
 	char **array;
 	char *token;
-	char *copy;
+	char copy[1024];
 
-	copy = malloc(strlen(str) + 1);
 	if (copy == NULL)
 	{
 		perror("hsh");
@@ -36,17 +35,16 @@ char **splitstring(char *str, const char *delim)
 	array = malloc((sizeof(char *) * 2));
 	array[0] = strdup(token);
 
-	i = 1;
+	i = 0;
 	wn = 3;
 	while (token)
 	{
-		token = strtok(NULL, delim);
 		array = _realloc(array, (sizeof(char *) * (wn - 1)), (sizeof(char *) * wn));
 		array[i] = strdup(token);
 		i++;
 		wn++;
+		token = strtok(NULL, delim);
 	}
-	free(copy);
 	return (array);
 }
 
@@ -152,7 +150,7 @@ int main(void)
 
 	list = splitstring(name, del);
 
-	for (i = 0; i < 5; i++)
+	for (i = 0; list[i] != NULL; i++)
 	{
 		printf("%s\n", list[i]);
 	}
