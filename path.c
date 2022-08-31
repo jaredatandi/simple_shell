@@ -1,50 +1,16 @@
-#include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-char *get_value(char *var)
+extern char **environ;
+
+int main(void)
 {
-	int i;
 
-	for (i = 0; var[i] != '='; i++)
-		;
-	return (var + i + 1);
-}
-
-char *get_environ(char **environ, char *var)
-{
-	int j, k;
-
-	char *name, *value;
-
-	for (j = 0; environ[j]; j++)
+	while (*environ != NULL)
 	{
-		name = malloc(1024);
-
-		for (k = 0; environ[j][k] != '='; k++)
-		{
-			name[j] = environ[j][k];
-
-			if (name == var)
-			{
-				value = get_value(environ[j]);
-				free(name);
-				return (value);
-			}
-		}
-		free(name);
+		printf("%s\n", *environ);
+		environ++;
 	}
-	return (NULL);
+	return (0);
 }
 
-
-char **get_path(char **env)
-{
-	char **res, *find_path, *delim;
-
-	delim = ":";
-
-	find_path = get_environ(env, "PATH");
-	res = parse_data(find_path, delim);
-
-	return (res);
-}

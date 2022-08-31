@@ -11,7 +11,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
  * Return: array of pointers to words
  */
 
-char **splitstring(char *str, const char *delim)
+char **parse_data(char *str, const char *delim)
 {
 	int i, wn;
 	char **array;
@@ -48,33 +48,6 @@ char **splitstring(char *str, const char *delim)
 	return (array);
 }
 
-/**
- * execute - executes a command
- * @argv: array of arguments
- */
-
-/*
-void execute(char **argv)
-{
-
-	int d, status;
-
-	if (!argv || !argv[0])
-		return;
-	d = fork();
-	if (d == -1)
-	{
-		perror(_getenv("_"));
-	}
-	if (d == 0)
-	{
-		execve(argv[0], argv, environ);
-			perror(argv[0]);
-		exit(EXIT_FAILURE);
-	}
-	wait(&status);
-}
-*/
 
 /**
  * _realloc - Reallocates memory block
@@ -137,23 +110,4 @@ void freearv(char **arv)
 	for (i = 0; arv[i]; i++)
 		free(arv[i]);
 	free(arv);
-}
-
-int main(void)
-{
-	char *name = "jared:keago";
-	char *del = ":";
-	char **list;
-	int i;
-
-	list = malloc(1024 * 1024);
-
-	list = splitstring(name, del);
-
-	for (i = 0; list[i] != NULL; i++)
-	{
-		printf("%s\n", list[i]);
-	}
-
-	return (0);
 }
