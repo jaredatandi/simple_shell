@@ -10,18 +10,24 @@
  * Return: 0 on success and -1 if fail
  */
 
-int _execve(void)
+int _execve(char **argv)
 {
-	char *argv[] = {"/bin/ls", "-l", "/tmp", NULL};
 	int status;
-
+	char **arv;
 	pid_t c_pid;
 
+	arv = _strtok(argv[1], "\n");
+
 	c_pid = fork();
+	if (c_pid < 0)
+	{
+		printf("Error: could not fork");
+		return (-1);
+	}
 
 	if (c_pid == 0)
 	{
-		if (execve(argv[0], argv, NULL) == -1)
+		if (execve(arv[0], arv, environ) == -1)
 		{
 			perror("Error:");
 		}
@@ -29,7 +35,7 @@ int _execve(void)
 	else
 	{
 		wait(&status);
-		printf("parent taken over");
+		return (-1);
 	}
 
 	return (0);

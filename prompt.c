@@ -1,3 +1,4 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -16,18 +17,22 @@
 
 int prompt(int ac, char **av)
 {
-	int i = 0;
 	if (ac == 1)
 	{
-		perror("prompt");
-		exit(EXIT_FAILURE);
+		_getline();
 	}
 	/* check if you have reached end of array
 	 * print out the value if not
 	 * */
-	for (i = 0; av[i] != NULL; i++)
-		printf("%s\n", av[i]);
+	else
+		_execve(av);
 
 	return (0);
 
+}
+int main(int argc, char **argv)
+{
+	prompt(argc, argv);
+
+	return (0);
 }
