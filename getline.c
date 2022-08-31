@@ -24,16 +24,15 @@ int main(int ac, __attribute__((unused))char **av)
 
 	printf("$ ");
 
+	/* getline will allocate memory and size according to need */
 	while ((len = getline(&line, &n, stdin) != -1))
 	{
 		printf("%s", line);
 	}
 	
+	/* check if getline returned successfully */
 	if (len == -1)
 		printf("ERROR!\n");
 
 	return (0);
-
 }
-	
-
