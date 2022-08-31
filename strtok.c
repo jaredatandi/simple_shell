@@ -14,27 +14,41 @@
 
 char **_strtok(char *str, char *delim)
 {
-	char **array;
-	char *token;
-	int i;
+	char **array, *token, *copy;
+	int i, n;
+	
+	copy = malloc(strlen(str) + 1);
 
-	token = strtok(str, delim);
-	array = malloc(sizeof(char *) * 2);
-	array[0] = token;
-
-	i = 1;
-
-	while (token)
+	/* check if mem was allocated */
+	if (!copy)
 	{
-		array = realloc(array, (sizeof(char *) * 2 * i));
-		array[i] = token;
-		token = strtok(NULL, delim);
+		perror("hsh");
+		return (NULL);
+	}
+	i = 0;
+
+	/* copy the string */
+	while (str[i])
+	{
+		copy[i] = str[i];
 		i++;
 	}
+	copy[i] = '\0';
 
-	return (array);
+	token = strtok(copy, delim);
+	array = malloc((sizeof(char *) * 2));
+
+	i = 0;
+	n = 3;
+	while (token)
+	{
+		array = realloc(array, (sizeof(char *) * n));
+		array[i] = strdup(token);
+		i++;
+		n++;
+		token = strtok(NULL, delim);
+	}
+
+	free(copy);
+	return(array);
 }
-
-
-	
-
