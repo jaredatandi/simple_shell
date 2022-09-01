@@ -7,54 +7,35 @@
  * in PATH
  */
 
-DIR_LIST *build_list(DIR_LIST *head)
+DIR_LIST *build_list(DIR_LIST *head, char *d)
 {
-        DIR_LIST *newnode;
+        DIR_LIST *newnode,*temp;
 
-        if (!head->dir)
+        temp = malloc(sizeof(DIR_LIST *));
+        newnode = malloc(sizeof(DIR_LIST *));
+        if (!newnode)
         {
                 perror("hsh");
                 return (NULL);
         }
 
-        if (head->next == NULL)
+        if (head == NULL)
         {
 
-                newnode = malloc(sizeof(DIR_LIST));
-
-                if (!newnode)
-                {
-                        perror("hsh");
-                        free(newnode);
-                        return (NULL);
-                }
-
-                newnode->dir = head->dir;
+                head = temp = newnode;
+                newnode->dir = d;
                 newnode->next = NULL;
-                head->next = newnode;
+
+                return (head);
         }
         else
         {
+                newnode->dir = d;
+                newnode->next = NULL;
+                temp->next = newnode;
+                temp = newnode;
 
-                DIR_LIST *temp, *node;
-
-                node = malloc(sizeof(DIR_LIST));
-                
-                if (!node)
-                {
-                        perror("hsh");
-                        free(node);
-                        return (NULL);
-                }
-                temp = head;
-                while (temp->next != NULL)
-                        temp = temp->next;
-
-                node->dir = head->dir;
-                node->next = NULL;
-                temp->next = node;
+                return (head);
         }
-        
-
-        return (head);
+        return (NULL);
 }

@@ -21,7 +21,7 @@ int prompt(int argc, char **argv);
 void _printenv(void);
 char *getenv_value(const char *name);
 char **getenv_dir(const char *name);
-DIR_LIST *build_list(DIR_LIST *head);
+DIR_LIST *build_list(DIR_LIST *head, char *dir);
 int create_list(void);
 
 #endif

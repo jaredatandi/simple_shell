@@ -12,7 +12,9 @@ int create_list(void)
         char *value, *var, **directories;
         int i = 0;
 
-        head = malloc(sizeof(DIR_LIST));
+        head = NULL;
+
+        head = (DIR_LIST *)malloc(sizeof(DIR_LIST));
         if (!head)
         {
                 perror("hsh");
@@ -22,23 +24,15 @@ int create_list(void)
         var = "PATH";
         value = getenv_value(var);
         directories = getenv_dir(value);
-        nwnode = malloc(sizeof(DIR_LIST));
+        nwnode = (DIR_LIST *)malloc(sizeof(DIR_LIST));
 
         while (directories[i] != NULL)
         {
-                head->dir = directories[i];
-                head->next = NULL;
-                nwnode = build_list(head);
+                nwnode = build_list(head, directories[i]);
                 i++;
         }
 
-        printf("in main: assigned\n");
-
-        while (nwnode->next)
-        {
-                nwnode = nwnode->next;
-                printf("%s\n", nwnode->dir);
-        }
+        head = nwnode;
 
         free(nwnode);
         return (0);
