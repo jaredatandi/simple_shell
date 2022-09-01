@@ -23,7 +23,7 @@ int _getline(void)
 	{
 		printf("%s", line);
 	}
-	
+
 	/* check if getline returned successfully */
 	if (len == -1)
 		printf("ERROR!\n");
