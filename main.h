@@ -12,4 +12,5 @@ int _getline(void);
 pid_t pid(void);
 int _execve(char **argv);
 int prompt(int argc, char **argv);
+void _printenv(void);
 #endif
