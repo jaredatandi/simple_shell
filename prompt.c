@@ -30,9 +30,13 @@ int prompt(int ac, char **av)
 	return (0);
 
 }
-int main(int argc, char **argv)
+int main(void)
 {
+        /*
 	prompt(argc, argv);
+        */
+
+        create_list();
 
 	return (0);
 }
