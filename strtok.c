@@ -12,7 +12,7 @@
  * terminated
  */
 
-char **_strtok(char *str, char *delim)
+char **_strtok(const char *str, char *delim)
 {
 	char **array, *token, *copy;
 	int i, n;
