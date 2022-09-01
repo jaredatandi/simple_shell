@@ -8,7 +8,7 @@
 
 int main(void)
 {
-    _printenv();
+        _printenv();
 
-    return (0);
+        return (0);
 }
