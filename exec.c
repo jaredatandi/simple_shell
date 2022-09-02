@@ -12,26 +12,8 @@
 
 int _execve(char **argv)
 {
-	int status;
-	char **arv;
-	pid_t c_pid;
-
-	if (!argv || !argv[1])
-		return (-1);
-
-	arv = _strtok(argv[1], "\n");
-
-	c_pid = fork();
-	if (c_pid < 0)
-		perror("hsh");
-
-	else if (c_pid == 0)
-	{
-		if (execve(arv[0], arv, environ) == -1)
-			perror("Error:");
-	}
-	else
-		wait(&status);
+        execvp (argv[0], argv);
+        perror(argv[0]);
 
 	return (0);
 }

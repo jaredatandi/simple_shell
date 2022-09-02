@@ -34,6 +34,6 @@ int create_list(void)
 
         head = nwnode;
 
-        free(nwnode);
+        free(head);
         return (0);
 }

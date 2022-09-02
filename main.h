@@ -14,14 +14,14 @@ typedef struct PATH
 } DIR_LIST;
 
 char **_strtok(const char *str, char *delim);
-int _getline(void);
+char **_getline(void);
 pid_t pid(void);
 int _execve(char **argv);
 int prompt(int argc, char **argv);
 void _printenv(void);
 char *getenv_value(const char *name);
 char **getenv_dir(const char *name);
+char **parse_line(char *line);
 DIR_LIST *build_list(DIR_LIST *head, char *dir);
-int create_list(void);
 
 #endif

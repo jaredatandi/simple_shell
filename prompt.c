@@ -4,9 +4,9 @@
 #include <errno.h>
 
 /**
- * prompt - prints all arguements
- * @ac: arguements count
- * @av: null terminated array of arguements
+ * prompt - prints all arguments
+ * @ac: arguments count
+ * @av: null terminated array of arguments
  *
  * Return: 0 (success)
  *
@@ -17,6 +17,7 @@
 
 int prompt(int ac, char **av)
 {
+
 	if (ac == 1)
 	{
 		_getline();
@@ -32,9 +33,7 @@ int prompt(int ac, char **av)
 }
 int main(int argc, char **argv)
 {
+
 	prompt(argc, argv);
-
-        create_list();
-
 	return (0);
 }
