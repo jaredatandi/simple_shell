@@ -20,12 +20,12 @@
 
 int main(int argc, char **argv)
 {
+        char **p_line;
         if (argc >= 2)
         {
-                execvp(argv[1], argv);
-                printf("here");
-        }
-        else
+                p_line = parse_line(argv[1]);
+                execvp(p_line[0], p_line);
+        } else
                 _getline();
         return (0);
 }
