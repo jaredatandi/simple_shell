@@ -8,15 +8,15 @@
  * _getline - prints "$ " and wait for the user to enter
  * a command, prints it in the next line
  *
- * @ac: arguments count
- *
- * Return: 0 sucess
+ * Return: 0 success
  */
 char **_getline(void)
 {
 	char *line = NULL, buf[512];
         char **p_line;
         pid_t c_pid;
+        DIR_LIST *head;
+        char *path;
 
         for (;;)
         {
@@ -28,8 +28,12 @@ char **_getline(void)
                 }
 
                 p_line = parse_line(line);
+                head = create_list();
+                path = _which(p_line[0], head);
+
                 if (!p_line[0])
                         continue;
+                p_line[0] = path;
 
                 switch (c_pid = fork())
                 {
@@ -37,14 +41,12 @@ char **_getline(void)
                                 perror("fork");
                                 break;
                         case 0:
-                                _execve(p_line);
+                                execve(p_line[0], p_line, environ);
                                 break;
                         default:
                                 waitpid(c_pid, NULL, 0);
                 }
         }
-                
-
 
         return (p_line);
 }

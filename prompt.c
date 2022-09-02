@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <string.h>
 
 /**
  * prompt - prints all arguments
@@ -14,26 +15,29 @@
  * av array passed to it without using ac
  */
 
-
-int prompt(int ac, char **av)
+char **dirs(char *name)
 {
+        char **dirs, *value;
+        value = getenv_value(name);
+        dirs = getenv_dir(value);
 
-	if (ac == 1)
-	{
-		_getline();
-	}
-	/* check if you have reached end of array
-	 * print out the value if not
-	 * */
-	else
-		_execve(av);
-
-	return (0);
-
+        return (dirs);
 }
+
 int main(int argc, char **argv)
 {
 
-	prompt(argc, argv);
-	return (0);
+        char **dir_arr, *name, *path, **var;
+        name = "PATH";
+        dir_arr = dirs(name);
+
+        if (!(argc == 1))
+        {
+                var = parse_line(argv[1]);
+                path = strcat(dir_arr[0], var[0]);
+                execve(path, argv, environ);
+        }
+        else
+                _getline();
+        return (0);
 }

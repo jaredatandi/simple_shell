@@ -22,6 +22,8 @@ void _printenv(void);
 char *getenv_value(const char *name);
 char **getenv_dir(const char *name);
 char **parse_line(char *line);
-DIR_LIST *build_list(DIR_LIST *head, char *dir);
+char *_which(char *name, DIR_LIST *head);
+DIR_LIST *build_list(DIR_LIST **head, char *dir);
+DIR_LIST *create_list();
 
 #endif

@@ -4,38 +4,40 @@
 
 /**
  * build_list - builds a linked list of the directories
+ * @head: pointer to the list
+ * @d: the directories
+ * Return: pointer to the built list
  * in PATH
  */
 
-DIR_LIST *build_list(DIR_LIST *head, char *d)
+DIR_LIST *build_list(DIR_LIST **head, char *d)
 {
         DIR_LIST *newnode,*temp;
 
-        temp = malloc(sizeof(DIR_LIST *));
-        newnode = malloc(sizeof(DIR_LIST *));
-        if (!newnode)
+        newnode = malloc(sizeof(DIR_LIST));
+        if (!newnode || !d)
         {
                 perror("hsh");
                 return (NULL);
         }
 
-        if (head == NULL)
+        newnode->dir = d;
+        newnode->next = NULL;
+
+        if (*head == NULL)
         {
-
-                head = temp = newnode;
-                newnode->dir = d;
-                newnode->next = NULL;
-
-                return (head);
+                *head = newnode;
         }
+
         else
         {
-                newnode->dir = d;
-                newnode->next = NULL;
-                temp->next = newnode;
-                temp = newnode;
+                temp = *head;
 
-                return (head);
+                while (temp->next)
+                {
+                        temp = temp->next;
+                }
+                temp->next = newnode;
         }
-        return (NULL);
+        return (*head);
 }
