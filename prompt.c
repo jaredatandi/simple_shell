@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <sys/stat.h>
 
 /**
  * prompt - prints all arguments
@@ -15,27 +16,14 @@
  * av array passed to it without using ac
  */
 
-char **dirs(char *name)
-{
-        char **dirs, *value;
-        value = getenv_value(name);
-        dirs = getenv_dir(value);
 
-        return (dirs);
-}
 
 int main(int argc, char **argv)
 {
-
-        char **dir_arr, *name, *path, **var;
-        name = "PATH";
-        dir_arr = dirs(name);
-
-        if (!(argc == 1))
+        if (argc >= 2)
         {
-                var = parse_line(argv[1]);
-                path = strcat(dir_arr[0], var[0]);
-                execve(path, argv, environ);
+                execvp(argv[1], argv);
+                printf("here");
         }
         else
                 _getline();
