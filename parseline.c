@@ -22,13 +22,13 @@ char **parse_line(char *line)
 	res = strtok(line, " \t\r\n");
 	for (n = 0; res; n++)
 	{
-	if (sizeof(av) > n)
-	{
-	av = malloc(sizeof(char *) * size);
-	av = realloc(av, size);
-	}
-	av[n] = res;
-	res = strtok(NULL, " \t\r\n");
+		if (sizeof(av) > n)
+		{
+			av = malloc(sizeof(char *) * size);
+			av = realloc(av, size);
+		}
+		av[n] = res;
+		res = strtok(NULL, " \t\r\n");
 	}
 	return (av);
 }
