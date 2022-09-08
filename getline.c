@@ -22,7 +22,8 @@ char **_getline(void)
 	for (;;)
 	{
 		write(2, "$ ", 2);
-		if (!(line == fgets(buf, sizeof(buf), stdin)))
+		line = fgets(buf, sizeof(buf), stdin);
+		if (!(line))
 		{
 			write(2, "EOF\n", 4);
 			exit(0);
@@ -34,7 +35,6 @@ char **_getline(void)
 
 		if (!p_line[0])
 			continue;
-		printf("%s: path\n", path);
 		p_line[0] = path;
 
 		switch (c_pid = fork())
@@ -43,7 +43,6 @@ char **_getline(void)
 				perror("fork");
 				break;
 			case 0:
-				printf("%s first\n", p_line[0]);
 				execve(p_line[0], p_line, environ);
 				break;
 			default:
