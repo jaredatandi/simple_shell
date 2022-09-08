@@ -12,31 +12,31 @@
 
 char *getenv_value(const char *name)
 {
-        int i = 0;
-        int j = 0;
-        char *buf;
+	int i = 0;
+	int j = 0;
+	char *buf;
 
 
 
-        while (environ[i] != NULL)
-        {
-                j = 0;
+	while (environ[i] != NULL)
+	{
+	j = 0;
 
-                while (name[j])
-                {
-                        if(name[j] != environ[i][j])
-                                break;
-                        j++;
-                }
+	while (name[j])
+	{
+	if (name[j] != environ[i][j])
+	break;
+	j++;
+	}
 
-                if (name[j] == '\0')
-                {
-                        buf = (environ[i] + j + 1);
-                        return (buf);
-                }
-                i++;
-        }
+	if (name[j] == '\0')
+	{
+	buf = (environ[i] + j + 1);
+	return (buf);
+	}
+	i++;
+	}
 
-        return (NULL);
+	return (NULL);
 }
 

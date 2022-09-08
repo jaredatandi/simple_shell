@@ -16,7 +16,7 @@ char **_strtok(const char *str, char *delim)
 {
 	char **array, *token, *copy;
 	int i, n;
-	
+
 	copy = malloc(strlen(str) + 1);
 
 	/* check if mem was allocated */
@@ -50,5 +50,5 @@ char **_strtok(const char *str, char *delim)
 	}
 
 	free(copy);
-	return(array);
+	return (array);
 }

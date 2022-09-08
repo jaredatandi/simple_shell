@@ -13,24 +13,24 @@
 
 char **parse_line(char *line)
 {
-        char *res, **av;
-        long unsigned int n;
-        int size = BUFFSIZE;
+	char *res, **av;
+	unsigned long int n;
+	int size = BUFFSIZE;
 
-        av = malloc(sizeof(char *) * size);
+	av = malloc(sizeof(char *) * size);
 
-        res = strtok (line, " \t\r\n");
-        for (n = 0; res; n++)
-        {
-                if (sizeof(av) > n)
-                {
-                        av = malloc(sizeof(char *) * size);
-                        av = realloc(av, size);
-                }
-                av[n] = res;
-                res = strtok(NULL, " \t\r\n");
-        }
-        return (av);
+	res = strtok(line, " \t\r\n");
+	for (n = 0; res; n++)
+	{
+	if (sizeof(av) > n)
+	{
+	av = malloc(sizeof(char *) * size);
+	av = realloc(av, size);
+	}
+	av[n] = res;
+	res = strtok(NULL, " \t\r\n");
+	}
+	return (av);
 }
 
 

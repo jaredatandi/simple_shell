@@ -12,32 +12,32 @@
 
 DIR_LIST *build_list(DIR_LIST **head, char *d)
 {
-        DIR_LIST *newnode,*temp;
+	DIR_LIST *newnode, *temp;
 
-        newnode = malloc(sizeof(DIR_LIST));
-        if (!newnode || !d)
-        {
-                perror("hsh");
-                return (NULL);
-        }
+	newnode = malloc(sizeof(DIR_LIST));
+	if (!newnode || !d)
+	{
+	perror("hsh");
+	return (NULL);
+	}
 
-        newnode->dir = d;
-        newnode->next = NULL;
+	newnode->dir = d;
+	newnode->next = NULL;
 
-        if (*head == NULL)
-        {
-                *head = newnode;
-        }
+	if (*head == NULL)
+	{
+	*head = newnode;
+	}
 
-        else
-        {
-                temp = *head;
+	else
+	{
+	temp = *head;
 
-                while (temp->next)
-                {
-                        temp = temp->next;
-                }
-                temp->next = newnode;
-        }
-        return (*head);
+	while (temp->next)
+	{
+	temp = temp->next;
+	}
+	temp->next = newnode;
+	}
+	return (*head);
 }

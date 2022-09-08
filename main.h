@@ -6,6 +6,13 @@
 
 extern char **environ;
 
+/**
+ * struct PATH - a struct to stor the
+ * every dir in path as a node
+ * @dir: the directory name
+ * @next: the link to the next dir
+ */
+
 
 typedef struct PATH
 {
