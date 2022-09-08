@@ -28,15 +28,15 @@ char *_which(char *name, DIR_LIST *head)
 
 	while (temp)
 	{
-	pstr = strcat(directories[i], "/");
-	str = strcat(pstr, name);
+		pstr = strcat(directories[i], "/");
+		str = strcat(pstr, name);
 
-	if (stat(str, &st) == 0)
-	{
-	return (str);
-	}
-	temp = temp->next;
-	i++;
+		if (stat(str, &st) == 0)
+		{
+			return (str);
+		}
+		temp = temp->next;
+		i++;
 	}
 
 	return (NULL);
