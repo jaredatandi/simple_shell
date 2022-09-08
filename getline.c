@@ -32,6 +32,8 @@ char **_getline(void)
 		p_line = parse_line(line);
 		head = create_list();
 		path = _which(p_line[0], head);
+		if (!path)
+			perror("hsh");
 
 		if (!p_line[0])
 			continue;
