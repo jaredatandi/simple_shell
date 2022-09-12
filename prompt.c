@@ -33,8 +33,17 @@ int main(int argc, char **argv)
 			argv[i] = argv[i + 1];
 			i++;
 		}
+		/*
 		argv[i] = '\0';
-		execvp(argv[0], argv);
+		*/
+		if (execvp(argv[0], argv) == -1)/* check for errors */
+		{
+			perror("hsh");
+			fflush(stdout);
+			exit(0);
+			return (-1);
+		}
+		
 	}
 	return (0);
 }
