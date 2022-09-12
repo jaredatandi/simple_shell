@@ -20,6 +20,5 @@ char **getenv_dir(const char *name)
 
 	value = _strtok(name, delim);
 
-
 	return (value);
 }

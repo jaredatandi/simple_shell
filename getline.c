@@ -12,12 +12,9 @@
  */
 char **_getline(void)
 {
-	char *line = NULL;
-	char buf[1024];
-	char **p_line;
+	char *line = NULL, buf[1024], **p_line, *path;
 	pid_t c_pid;
 	DIR_LIST *head;
-	char *path;
 
 	for (;;)
 	{
@@ -34,7 +31,6 @@ char **_getline(void)
 		path = _which(p_line[0], head);
 		if (!path)
 			perror("hsh");
-
 		if (!p_line[0])
 			continue;
 		p_line[0] = path;
