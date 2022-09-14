@@ -1,0 +1,3 @@
+[submodule "shell_testcases"]
+	path = shell_testcases
+	url = https://github.com/jaredatandi/shell_testcases.git
