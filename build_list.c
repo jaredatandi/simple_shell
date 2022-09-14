@@ -21,8 +21,8 @@ DIR_LIST *create_list(void)
 
 	while (directories[i] != NULL)
 	{
-	head = build_list(&head, directories[i]);
-	i++;
+		head = build_list(&head, directories[i]);
+		i++;
 	}
 	return (head);
 }

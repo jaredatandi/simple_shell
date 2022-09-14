@@ -28,9 +28,14 @@ char **_getline(void)
 
 		p_line = parse_line(line);
 		head = create_list();
+		if (head == NULL)
+			perror("dir");
 		path = _which(p_line[0], head);
 		if (!path)
-			perror("hsh");
+		{
+			perror("path");
+			return (NULL);
+		}
 		if (!p_line[0])
 			continue;
 		p_line[0] = path;
@@ -41,7 +46,11 @@ char **_getline(void)
 				perror("fork");
 				break;
 			case 0:
-				execve(p_line[0], p_line, environ);
+				if (execve(p_line[0], p_line, environ) == -1)
+				{
+					perror("execve");
+					return (NULL);
+				}
 				break;
 			default:
 				waitpid(c_pid, NULL, 0);
