@@ -1,6 +1,7 @@
 #include "main.h"
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #define BUFFSIZE 1024
 
@@ -16,10 +17,12 @@ char **parse_line(char *line)
 	char *res, **av;
 	unsigned long int n;
 	int size = BUFFSIZE;
+	int i = 0;
 
 	av = malloc(sizeof(char *) * size);
 
 	res = strtok(line, " \t\r\n");
+	printf("%s", res);
 	for (n = 0; res; n++)
 	{
 		if (sizeof(av) > n)
@@ -29,6 +32,11 @@ char **parse_line(char *line)
 		}
 		av[n] = res;
 		res = strtok(NULL, " \t\r\n");
+	}
+	while (av[i] != NULL)
+	{
+		printf("here%s\n", av[i]);
+		i++;
 	}
 	return (av);
 }

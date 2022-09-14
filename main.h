@@ -32,5 +32,6 @@ char **parse_line(char *line);
 char *_which(char *name, DIR_LIST *head);
 DIR_LIST *build_list(DIR_LIST **head, char *dir);
 DIR_LIST *create_list();
+char **create_args(char **pline);
 
 #endif

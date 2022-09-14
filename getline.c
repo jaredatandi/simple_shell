@@ -12,9 +12,10 @@
  */
 char **_getline(void)
 {
-	char *line = NULL, buf[1024], **p_line, *path;
+	char *line = NULL, buf[1024], **p_line, *path, **args;
 	pid_t c_pid;
 	DIR_LIST *head;
+	int j = 0;
 
 	for (;;)
 	{
@@ -27,6 +28,11 @@ char **_getline(void)
 		}
 
 		p_line = parse_line(line);
+		while (p_line[j] != NULL)
+		{
+			printf("%s\n", p_line[j]);
+			j++;
+		}
 		head = create_list();
 		if (head == NULL)
 			perror("dir");
@@ -39,6 +45,7 @@ char **_getline(void)
 		if (!p_line[0])
 			continue;
 		p_line[0] = path;
+		args = create_args(p_line);
 
 		switch (c_pid = fork())
 		{
@@ -46,7 +53,7 @@ char **_getline(void)
 				perror("fork");
 				break;
 			case 0:
-				if (execve(p_line[0], p_line, environ) == -1)
+				if (execve(p_line[0], args, environ) == -1)
 				{
 					perror("execve");
 					return (NULL);
